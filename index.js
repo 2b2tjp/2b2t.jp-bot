@@ -13,6 +13,9 @@ logger.config(true)
 
 client.on('message', async msg => {
   if (msg.author.bot || msg.system) return
+  if (msg.content.includes('anarchycraft.mydns.vc')) {
+    return msg.delete()
+  }
   if (msg.content.startsWith(env.prefix)) {
     logger.info(`${msg.author.tag} (${msg.author.id}) sent command: '${msg.content}'`)
     dispatcher(msg, require('./lang/en.json'), env.prefix, [], env.prefix).catch(e => { logger.error(e.stack || e) })
