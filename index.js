@@ -13,7 +13,7 @@ logger.config(true)
 
 client.on('message', async msg => {
   if (msg.author.bot || msg.system) return
-  if (msg.content.includes('anarchycraft.mydns.vc')) {
+  if (msg.content.includes('anarchycraft.mydns.vc') || msg.content.includes('由于有广告配额')) {
     return msg.delete()
   }
   if (msg.content.startsWith(env.prefix)) {
