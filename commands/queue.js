@@ -3,7 +3,7 @@ const fetch = require('node-fetch')
 
 module.exports = class extends Command {
   constructor() {
-    super('queue')
+    super('queue', { alias: ['q'] })
   }
 
   async run(msg) {
