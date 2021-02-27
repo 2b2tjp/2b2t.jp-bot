@@ -1,4 +1,3 @@
-const Discord = require('discord.js')
 const { Command } = require('bot-framework')
 
 module.exports = class extends Command {

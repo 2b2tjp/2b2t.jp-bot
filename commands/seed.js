@@ -6,6 +6,6 @@ module.exports = class extends Command {
   }
 
   async run(msg) {
-    msg.channel.send('`-201386215780397777`')
+    msg.channel.send('`' + process.env.seed + '`')
   }
 }

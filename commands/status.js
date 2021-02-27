@@ -7,7 +7,7 @@ module.exports = class extends Command {
   }
 
   async run(msg) {
-    const data = await fetch('https://status.2b2t.jp/api/data.json').then(res => res.json())
+    const data = await fetch(process.env.endPoint).then(res => res.json())
     msg.channel.send(`
 current server status as of ${new Date(data.tps[data.tps.length - 1][0]).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })} JST (UTC: ${new Date(data.tps[data.tps.length - 1][0]).toLocaleString('ja-JP', { timeZone: 'UTC' })})
 tps: \`${data.tps[data.tps.length - 1][1]} ticks per second\`
