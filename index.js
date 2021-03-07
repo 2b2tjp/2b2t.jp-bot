@@ -14,7 +14,7 @@ logger.config(true)
 
 client.on('message', async msg => {
   if (msg.author.bot || msg.system) return
-  if (msg.guild.id === '797157625195659264') {
+  if (msg.guild && msg.guild.id === '797157625195659264') {
     if (msg.content.includes('http://') || msg.content.includes('https://')) {
       msg.delete()
       return
