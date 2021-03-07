@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "bot-framework": "acrylic-style/bot-framework",
     "discord.js": "^12.5.1",
