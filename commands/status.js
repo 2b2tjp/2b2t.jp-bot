@@ -8,9 +8,9 @@ module.exports = class extends Command {
 
   async run(msg) {
     const data = await fetch(process.env.endPoint).then(res => res.json())
-    const dateDifference = data.players.length - data.playersInQueue.length
     const playersDate = data.tps[data.players.length - 1][0]
     const playersInQueueDate = data.tps[data.playersInQueue.length - 1][0]
+    const dateDifference = playersDate - playersInQueueDate
     let downMsg = '';
     let players = data.players[data.players.length - 1][1]
     let playersInQueue = data.playersInQueue[data.playersInQueue.length - 1][1]
