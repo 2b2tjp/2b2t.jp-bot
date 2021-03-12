@@ -35,7 +35,7 @@ client.login(env.token)
 function checkMessage(message) {
   if (message.author.bot || message.system) return true
   if (message.guild && message.guild.id != '797157625195659264') return true
-  if (message.member.hasPermission('MANAGE_MESSAGES')) return true
+  if (message.guild.me.hasPermission('MANAGE_ROLES') && message.member.hasPermission('MANAGE_MESSAGES')) return true
   const content = message.content.toLowerCase();
   if (content.includes('http://') || content.includes('https://')) return false
   return true
