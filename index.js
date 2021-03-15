@@ -14,9 +14,6 @@ logger.config(true)
 
 client.on('message', async msg => {
   if (msg.author.bot || msg.system) return
-  if (!checkMessage(msg)) {
-    msg.delete()
-  }
   if (msg.content.startsWith(env.prefix)) {
     logger.info(`${msg.author.tag} (${msg.author.id}) sent command: '${msg.content}'`)
     dispatcher(msg, require('./lang/en.json'), env.prefix, [], env.prefix).catch(e => {
@@ -25,18 +22,4 @@ client.on('message', async msg => {
   }
 })
 
-client.on('messageUpdate', (oldMessage, newMessage) => {
-  if (checkMessage(newMessage)) return
-  newMessage.delete();
-})
-
 client.login(env.token)
-
-function checkMessage(message) {
-  if (message.author.bot || message.system) return true
-  if (message.guild && message.guild.id != '797157625195659264') return true
-  if (message.guild.me.hasPermission('MANAGE_ROLES') && message.member.hasPermission('MANAGE_MESSAGES')) return true
-  const content = message.content.toLowerCase();
-  if (content.includes('http://') || content.includes('https://')) return false
-  return true
-}
